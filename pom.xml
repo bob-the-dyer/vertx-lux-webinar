@@ -89,10 +89,10 @@
                 <executions>
                     <execution>
                         <id>docker</id>
-                        <phase>package</phase>
                         <goals>
                             <goal>build</goal>
                         </goals>
+                        <phase>package</phase>
                     </execution>
                 </executions>
                 <configuration>
@@ -108,6 +108,28 @@
                         </resource>
                     </resources>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <executions>
+                    <execution>
+                        <id>run-in-docker</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <phase>package</phase>
+                        <configuration>
+                            <executable>docker</executable>
+                            <arguments>
+                                <argument>run</argument>
+                                <argument>-i</argument>
+                                <argument>${docker.image}</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

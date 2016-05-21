@@ -17,7 +17,7 @@
 
     <properties>
         <!-- the Groovy file -->
-        <main.verticle>producer.groovy</main.verticle>
+        <main.verticle>ru/spb/luxoft/webinar/bnb/producer.groovy</main.verticle>
         <docker.image>bnb/producer</docker.image>
     </properties>
 

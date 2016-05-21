@@ -1,3 +1,5 @@
+package ru.spb.luxoft.webinar.bnb
+
 import io.vertx.core.json.JsonObject
 
 def eb = vertx.eventBus()
@@ -5,7 +7,7 @@ i = 1;
 vertx.setPeriodic(5000, { v ->
     def map = [
             "from"    : "producer",
-            "message" : "The beauty and the beast is a great story",
+            "message" : "The beauty and the beast",
             "counter" : i++
     ]
     def json = new JsonObject(map)

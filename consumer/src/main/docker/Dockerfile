@@ -10,7 +10,7 @@ FROM java:8-jre
 ENV VERTICLE_FILE consumer-0.1-fat.jar
 
 # Set vertx option
-ENV VERTX_OPTIONS ""
+ENV VERTX_OPTIONS "-cluster"
 
 # Set the location of the verticles
 ENV VERTICLE_HOME /usr/verticles

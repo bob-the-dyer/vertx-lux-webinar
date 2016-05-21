@@ -17,7 +17,7 @@
 
     <properties>
         <!-- the Ruby file -->
-        <main.verticle>consumer.rb</main.verticle>
+        <main.verticle>ru/spb/luxoft/webinar/bnb/consumer.rb</main.verticle>
         <docker.image>bnb/consumer</docker.image>
     </properties>
 
