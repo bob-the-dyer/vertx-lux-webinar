@@ -13,6 +13,7 @@
         <!-- the Groovy file -->
         <main.verticle>producer.groovy</main.verticle>
         <vertx.version>3.2.1</vertx.version>
+        <docker.image>bnb/producer</docker.image>
     </properties>
 
     <dependencies>
@@ -28,7 +29,6 @@
             <version>${vertx.version}</version>
         </dependency>
 
-        <!-- Add hazelcast deps if you want it clusterable -->
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-hazelcast</artifactId>
@@ -46,6 +46,14 @@
 
         <plugins>
             <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>2.3</version>
@@ -57,42 +65,57 @@
                         </goals>
                         <configuration>
                             <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <manifestEntries>
                                         <Main-Class>io.vertx.core.Launcher</Main-Class>
                                         <Main-Verticle>${main.verticle}</Main-Verticle>
                                     </manifestEntries>
                                 </transformer>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
                                     <resource>META-INF/services/io.vertx.core.spi.VerticleFactory</resource>
                                 </transformer>
                             </transformers>
                             <artifactSet>
                             </artifactSet>
-                            <outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar</outputFile>
+                            <outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar
+                            </outputFile>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.4.0</version>
+                <!--
+                  This plugin builds the Docker image. It merges src/main/docker/Dockerfile with the resources set in the
+                  configuration. The resources should embed the current project and its dependencies. Here there is no
+                  dependencies.
+                -->
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.2.11</version>
                 <executions>
                     <execution>
-                        <id>run-app</id>
+                        <id>docker</id>
+                        <phase>package</phase>
                         <goals>
-                            <goal>exec</goal>
+                            <goal>build</goal>
                         </goals>
-                        <configuration>
-                            <executable>java</executable>
-                            <arguments>
-                                <argument>-jar</argument>
-                                <argument>target/${project.artifactId}-${project.version}-fat.jar</argument>
-                            </arguments>
-                        </configuration>
                     </execution>
                 </executions>
+                <configuration>
+                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+                    <imageName>${docker.image}</imageName>
+                    <resources>
+                        <resource>
+                            <targetPath>/verticles</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <includes>
+                                <include>${project.artifactId}-${project.version}-fat.jar</include>
+                            </includes>
+                        </resource>
+                    </resources>
+                </configuration>
             </plugin>
         </plugins>
     </build>
