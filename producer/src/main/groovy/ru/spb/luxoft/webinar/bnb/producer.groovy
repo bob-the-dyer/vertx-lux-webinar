@@ -51,7 +51,7 @@ vertx.setPeriodic(5000, { v ->
             "message": story[i],
             "counter": i
     ]
-    if (i < story.size()) {
+    if (i < story.size() - 1) {
         i++;
     } else {
         i = 0;
