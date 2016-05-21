@@ -5,36 +5,28 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ru.spb.luxoft.webinar.bnb</groupId>
+    <parent>
+        <relativePath>../pom.xml</relativePath>
+        <groupId>ru.spb.luxoft.webinar.bnb</groupId>
+        <artifactId>parent</artifactId>
+        <version>0.1</version>
+    </parent>
+
     <artifactId>producer</artifactId>
     <version>0.1</version>
 
     <properties>
         <!-- the Groovy file -->
         <main.verticle>producer.groovy</main.verticle>
-        <vertx.version>3.2.1</vertx.version>
         <docker.image>bnb/producer</docker.image>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>io.vertx</groupId>
-            <artifactId>vertx-core</artifactId>
-            <version>${vertx.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.vertx</groupId>
             <artifactId>vertx-lang-groovy</artifactId>
             <version>${vertx.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>io.vertx</groupId>
-            <artifactId>vertx-hazelcast</artifactId>
-            <version>${vertx.version}</version>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -43,80 +35,5 @@
                 <directory>${project.basedir}/src/main/groovy</directory>
             </resource>
         </resources>
-
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>2.3</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <transformers>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <manifestEntries>
-                                        <Main-Class>io.vertx.core.Launcher</Main-Class>
-                                        <Main-Verticle>${main.verticle}</Main-Verticle>
-                                    </manifestEntries>
-                                </transformer>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-                                    <resource>META-INF/services/io.vertx.core.spi.VerticleFactory</resource>
-                                </transformer>
-                            </transformers>
-                            <artifactSet>
-                            </artifactSet>
-                            <outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar
-                            </outputFile>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <!--
-                  This plugin builds the Docker image. It merges src/main/docker/Dockerfile with the resources set in the
-                  configuration. The resources should embed the current project and its dependencies. Here there is no
-                  dependencies.
-                -->
-                <groupId>com.spotify</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>0.2.11</version>
-                <executions>
-                    <execution>
-                        <id>docker</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
-                    <imageName>${docker.image}</imageName>
-                    <resources>
-                        <resource>
-                            <targetPath>/verticles</targetPath>
-                            <directory>${project.build.directory}</directory>
-                            <includes>
-                                <include>${project.artifactId}-${project.version}-fat.jar</include>
-                            </includes>
-                        </resource>
-                    </resources>
-                </configuration>
-            </plugin>
-        </plugins>
     </build>
 </project>

@@ -10,6 +10,7 @@
     </content>
     <orderEntry type="jdk" jdkName="1.8.0_51" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: io.vertx:vertx-lang-groovy:3.2.1" level="project" />
     <orderEntry type="library" name="Maven: io.vertx:vertx-core:3.2.1" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-common:4.0.33.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-buffer:4.0.33.Final" level="project" />
@@ -20,7 +21,6 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.6.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.6.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.6.0" level="project" />
-    <orderEntry type="library" name="Maven: io.vertx:vertx-lang-groovy:3.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.groovy:groovy-all:2.4.5" level="project" />
     <orderEntry type="library" name="Maven: io.vertx:vertx-hazelcast:3.2.1" level="project" />
     <orderEntry type="library" name="Maven: com.hazelcast:hazelcast:3.5.2" level="project" />
