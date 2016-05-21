@@ -12,4 +12,4 @@ vertx.setPeriodic(5000, { v ->
     println "producer sends: " + json
     eb.publish("story_topic", json)
 })
-println "producer is running"
+println "producer is now running"
