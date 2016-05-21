@@ -77,60 +77,82 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <!--
-                  This plugin builds the Docker image. It merges src/main/docker/Dockerfile with the resources set in the
-                  configuration. The resources should embed the current project and its dependencies. Here there is no
-                  dependencies.
-                -->
-                <groupId>com.spotify</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>0.2.11</version>
-                <executions>
-                    <execution>
-                        <id>docker</id>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                        <phase>package</phase>
-                    </execution>
-                </executions>
-                <configuration>
-                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
-                    <imageName>${docker.image}</imageName>
-                    <resources>
-                        <resource>
-                            <targetPath>/verticles</targetPath>
-                            <directory>${project.build.directory}</directory>
-                            <includes>
-                                <include>${project.artifactId}-${project.version}-fat.jar</include>
-                            </includes>
-                        </resource>
-                    </resources>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.4.0</version>
-                <executions>
-                    <execution>
-                        <id>run-in-docker</id>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <phase>package</phase>
-                        <configuration>
-                            <executable>docker</executable>
-                            <arguments>
-                                <argument>run</argument>
-                                <argument>-i</argument>
-                                <argument>${docker.image}</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>indocker</id>
+            <activation>
+                <property>
+                    <name>indocker</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <!--
+                          This plugin builds the Docker image. It merges src/main/docker/Dockerfile with the resources set in the
+                          configuration. The resources should embed the current project and its dependencies. Here there is no
+                          dependencies.
+                        -->
+                        <groupId>com.spotify</groupId>
+                        <artifactId>docker-maven-plugin</artifactId>
+                        <version>0.2.11</version>
+                        <executions>
+                            <execution>
+                                <id>docker</id>
+                                <goals>
+                                    <goal>build</goal>
+                                </goals>
+                                <phase>package</phase>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+                            <imageName>${docker.image}</imageName>
+                            <resources>
+                                <resource>
+                                    <targetPath>/verticles</targetPath>
+                                    <directory>${project.build.directory}</directory>
+                                    <includes>
+                                        <include>${project.artifactId}-${project.version}-fat.jar</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.4.0</version>
+                        <executions>
+                            <execution>
+                                <id>run-in-docker</id>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <phase>package</phase>
+                                <configuration>
+                                    <executable>docker</executable>
+                                    <arguments>
+                                        <argument>run</argument>
+                                        <argument>-i</argument>
+                                        <argument>${docker.image}</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
 </project>
