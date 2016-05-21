@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>Greetings</title>
+    <meta charset="UTF-8">
+    <script src="jquery.min.js"></script>
+    <script src="sockjs-0.3.4.min.js"></script>
+    <script src="vertxbus.js"></script>
+</head>
+<body>
+<H2>Greetings for junior:</H2>
+<script>
+    var eb = new vertx.EventBus("/eventbus");
+    eb.onopen = function () {
+        console.log("opening the socket");
+        eb.registerHandler("greetings", function (msg) {
+            console.log("recieving the message " + msg);
+            $('#greetings').append(
+                "<p>" +
+                    msg.from + ": " + msg.greeting + " (" + msg.counter + ")" +
+                "</p>");
+        });
+    };
+    eb.onclose = function () {
+        console.log("closing socket");
+        eb = null;
+    };
+</script>
+<div id="greetings"></div>
+</body>
+</html>
