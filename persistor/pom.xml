@@ -46,6 +46,11 @@
             <artifactId>vertx-shell</artifactId>
             <version>${vertx.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-dropwizard-metrics</artifactId>
+            <version>${vertx.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -136,7 +141,10 @@
                                         <argument>run</argument>
                                         <argument>--rm</argument>
                                         <argument>-i</argument>
-                                        <argument>-P</argument>
+                                        <argument>-p</argument>
+                                        <argument>1898:1898</argument>
+                                        <argument>-p</argument>
+                                        <argument>4000:4000</argument>
                                         <argument>--name</argument>
                                         <argument>persistor</argument>
                                         <argument>--link</argument>

@@ -3,7 +3,8 @@ Vert'x: Beauty and The Beast
 The goal is to show how to use vert.x to develop, deploy and maintain micro-services.
 To build project use: mvn clean package
 
-Verticals are deployed as a fat jar in both "native" and embedded modes inside Docker containers. 
+Verticals are deployed as a fat jar in both "native"(via vertx launcher) and embedded (inside spring boot app) 
+modes inside Docker containers. 
 To build project, deploy and run microservices in Docker use indocker profile: mvn clean package -P indocker 
 
 Hints for docker interaction:
@@ -16,7 +17,7 @@ Hints for docker interaction:
  - To remove all none images use: docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
  - To run mongodb in docker container use: docker run -it --rm --name lux-mongo -p 27017:27017 mongo
  
-Vert.x shell interactions:
+Vert.x shell useful interactions:
  - pwd
  - ls
  - cd
@@ -24,4 +25,7 @@ Vert.x shell interactions:
  - verticle-undeploy
  - verticle-deploy
  - bus-tail story_topic
+ - custom commands
+ 
+ Remote JMX doesn't work (jconsole, visualvm) until a lot of options are added
  
