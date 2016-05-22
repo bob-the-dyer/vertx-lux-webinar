@@ -7,9 +7,9 @@ var router = Router.router(vertx);
 router.route("/eventbus/*").handler(
     SockJSHandler.create(vertx).bridge({
         "outboundPermitteds": [
-            {"address": "greetings"}
+            {"address": "story_topic"}
         ]
     }).handle);
 router.route().handler(StaticHandler.create().handle);
 vertx.createHttpServer().requestHandler(router.accept).listen(8080);
-console.log("web is running");
+console.log("web is now running");

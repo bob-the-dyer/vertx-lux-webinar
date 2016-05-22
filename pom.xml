@@ -20,6 +20,7 @@
         <module>producer</module>
         <module>consumer</module>
         <module>persistor</module>
+        <module>web</module>
     </modules>
 
     <dependencies>
@@ -146,6 +147,7 @@
                                         <argument>run</argument>
                                         <argument>--rm</argument>
                                         <argument>-i</argument>
+                                        <argument>-P</argument>
                                         <argument>${docker.image}</argument>
                                     </arguments>
                                 </configuration>
