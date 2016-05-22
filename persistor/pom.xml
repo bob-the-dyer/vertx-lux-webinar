@@ -129,6 +129,7 @@
                                     <executable>docker</executable>
                                     <arguments>
                                         <argument>run</argument>
+                                        <argument>--rm</argument>
                                         <argument>-i</argument>
                                         <argument>--name</argument>
                                         <argument>persistor</argument>

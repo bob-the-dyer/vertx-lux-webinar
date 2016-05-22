@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.PostConstruct;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 @SpringBootApplication
 public class Application {
@@ -16,10 +18,10 @@ public class Application {
     }
 
     @PostConstruct
-    public void createClusteredVertx() {
+    public void createClusteredVertx() throws UnknownHostException {
+        //in embedded mode clustered eventbus is listening on 127.0.0.1 but we need real network ip
         final VertxOptions options = new VertxOptions()
-                .setClustered(true)
-                .setClusterHost("how the fuck I should specify the internal docker host??"); //TODO
+                .setClusterHost(InetAddress.getLocalHost().getHostAddress());
         Vertx.clusteredVertx(options, this::clusteredVertxCreated);
     }
 

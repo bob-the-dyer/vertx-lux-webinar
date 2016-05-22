@@ -144,6 +144,7 @@
                                     <executable>docker</executable>
                                     <arguments>
                                         <argument>run</argument>
+                                        <argument>--rm</argument>
                                         <argument>-i</argument>
                                         <argument>${docker.image}</argument>
                                     </arguments>
