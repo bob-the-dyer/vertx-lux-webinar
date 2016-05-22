@@ -29,6 +29,7 @@ public class Application {
         if (result.succeeded()) {
             final Vertx clusteredVertx = result.result();
             clusteredVertx.deployVerticle(new Persistor());
+            clusteredVertx.deployVerticle(new TelnetShell());
         }
     }
 

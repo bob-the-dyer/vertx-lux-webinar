@@ -15,3 +15,13 @@ Hints for docker interaction:
     2. docker rm $(docker ps -a -q)
  - To remove all none images use: docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
  - To run mongodb in docker container use: docker run -it --rm --name lux-mongo -p 27017:27017 mongo
+ 
+Vert.x shell interactions:
+ - pwd
+ - ls
+ - cd
+ - verticle-ls
+ - verticle-undeploy
+ - verticle-deploy
+ - bus-tail story_topic
+ 
