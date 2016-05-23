@@ -16,8 +16,7 @@
     <version>0.1</version>
 
     <properties>
-        <!-- the Ruby file -->
-        <main.verticle>ru/spb/luxoft/webinar/bnb/consumer.rb</main.verticle>
+        <main.verticle>consumer.rb</main.verticle>
         <docker.image>bnb/consumer</docker.image>
     </properties>
 
@@ -33,6 +32,9 @@
         <resources>
             <resource>
                 <directory>${project.basedir}/src/main/ruby</directory>
+            </resource>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
             </resource>
         </resources>
     </build>

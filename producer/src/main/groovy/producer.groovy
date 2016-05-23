@@ -1,5 +1,3 @@
-package ru.spb.luxoft.webinar.bnb
-
 import io.vertx.core.json.JsonObject
 
 def story = [

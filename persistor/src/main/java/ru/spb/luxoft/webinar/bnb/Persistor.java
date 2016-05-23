@@ -20,7 +20,11 @@ public class Persistor extends AbstractVerticle {
         );
         vertx.eventBus().consumer("story_topic", this::persistMessage);
         out.println("persistor is now running");
+    }
 
+    @Override
+    public void stop() throws Exception {
+        out.println("persistor is now stopped");
     }
 
     private void persistMessage(Message<JsonObject> msg) {

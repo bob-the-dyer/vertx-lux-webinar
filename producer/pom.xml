@@ -16,8 +16,7 @@
     <version>0.1</version>
 
     <properties>
-        <!-- the Groovy file -->
-        <main.verticle>ru/spb/luxoft/webinar/bnb/producer.groovy</main.verticle>
+        <main.verticle>producer.groovy</main.verticle>
         <docker.image>bnb/producer</docker.image>
     </properties>
 
@@ -33,6 +32,9 @@
         <resources>
             <resource>
                 <directory>${project.basedir}/src/main/groovy</directory>
+            </resource>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
             </resource>
         </resources>
     </build>

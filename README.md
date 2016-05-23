@@ -1,4 +1,4 @@
-Vert'x: Beauty and The Beast
+        Vert'x: Beauty and The Beast
 
 The goal is to show how to use vert.x to develop, deploy and maintain micro-services.
 To build project use: mvn clean package
@@ -7,7 +7,7 @@ Verticals are deployed as a fat jar in both "native"(via vertx launcher) and emb
 modes inside Docker containers. 
 To build project, deploy and run microservices in Docker use indocker profile: mvn clean package -P indocker 
 
-Hints for docker interaction:
+    Hints for docker interaction:
  - To initialize docker environment run in terminal: eval "$(docker-machine env default)"
  - Docker bridge network is 172.17.0.X
  - To kill all containers in once use: docker kill $(docker ps -q)
@@ -17,7 +17,8 @@ Hints for docker interaction:
  - To remove all none images use: docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
  - To run mongodb in docker container use: docker run -it --rm --name lux-mongo -p 27017:27017 mongo
  
-Vert.x shell useful interactions:
+ 
+    Vert.x shell useful interactions:
  - pwd
  - ls
  - cd
@@ -26,6 +27,12 @@ Vert.x shell useful interactions:
  - verticle-deploy
  - bus-tail story_topic
  - custom commands
- 
- Remote JMX doesn't work (jconsole, visualvm) until a lot of options are added
- 
+  
+
+Remote JMX doesn't work (jconsole, visualvm) until a lot of options are added
+
+    Running vert.x from command line
+vertx run ru/spb/luxoft/webinar/bnb/producer.groovy -cp consumer-0.1.jar:producer-0.1.jar:web-0.1.jar:cluster.xml -ha -cluster -cluster-host 10.0.1.2
+
+Custom cluster.xml is an override for hazelcast default config in order to use proper network interface as 
+there could be several and hazelcast can choose any.
