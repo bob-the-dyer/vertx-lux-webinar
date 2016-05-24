@@ -1,5 +1,3 @@
-package ru.spb.luxoft.webinar.bnb;
-
 import io.vertx.core.AbstractVerticle;
 import io.vertx.ext.shell.ShellService;
 import io.vertx.ext.shell.ShellServiceOptions;

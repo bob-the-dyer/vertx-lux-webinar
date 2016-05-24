@@ -12,6 +12,7 @@
         <relativePath/>
     </parent>
 
+    <groupId>ru.spb.luxoft.webinar.bnb</groupId>
     <artifactId>persistor</artifactId>
     <version>0.1</version>
 

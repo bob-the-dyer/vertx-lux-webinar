@@ -1,5 +1,3 @@
-package ru.spb.luxoft.webinar.bnb;
-
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;

@@ -22,6 +22,12 @@ To build project, deploy and run microservices in Docker use indocker profile: m
  - split brain demo: linux vm launch, blockade
  - Resume 
  
+ 
+    Bonus topics
+- https://www.techempower.com/benchmarks/
+- comparing with akka
+- vert.x internals: event loop, worker pool, shared data, nio 
+ 
 
     Hints for docker interaction:
  - To initialize docker environment run in terminal: eval "$(docker-machine env default)"
