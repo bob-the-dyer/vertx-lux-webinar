@@ -1,11 +1,11 @@
 version: '2'
 services:
   producer:
-    image: bnb/producer-0.1
+    image: bnb/producer:0.1
   consumer:
-    image: bnb/consumer-0.1
+    image: bnb/consumer:0.1
   persistor:
-    image: bnb/persistor-0.1
+    image: bnb/persistor:0.1
     ports:
      - "4000:4000"
      - "1898:1898"
@@ -16,7 +16,7 @@ services:
     ports:
      - "27017:27017"
   web:
-    image: bnb/web-0.1
+    image: bnb/web:0.1
     ports:
      - "8080:8080"
 
