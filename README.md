@@ -33,6 +33,14 @@ To build project, deploy and run microservices in Docker use indocker profile: m
     2. docker rm $(docker ps -a -q)
  - To remove all none images use: docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
  - To run mongodb in docker container use: docker run -it --rm --name lux-mongo -p 27017:27017 mongo
+ 
+ 
+     Hints for docker-compose interaction: 
+ - docker-compose up -d
+ - docker-compose ps
+ - docker-compose stop
+ - docker-compose up
+ - docker-compose scale producer=5
 
  
     Vert.x shell useful interactions:
