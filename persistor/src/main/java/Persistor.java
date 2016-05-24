@@ -17,19 +17,19 @@ public class Persistor extends AbstractVerticle {
                         .put("db_name", "luxdatabase")
         );
         vertx.eventBus().consumer("story_topic", this::persistMessage);
-        out.println("PERSISTOR is now running");
+        out.println("<--- PERSISTOR ---> is now running");
     }
 
     @Override
     public void stop() throws Exception {
-        out.println("persistor is now stopped");
+        out.println("<--- PERSISTOR ---> is now stopped");
     }
 
     private void persistMessage(Message<JsonObject> msg) {
         JsonObject message = msg.body();
         mongo.insert("messages", message, res -> {
             if (res.succeeded()) {
-                out.println("PERSISTOR inserts, counter:" +
+                out.println("####( PERSISTOR )#### inserts, counter:" +
                         msg.body().getInteger("counter"));
             } else {
                 out.println(res.cause().getMessage());
