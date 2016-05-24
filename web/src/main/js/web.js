@@ -12,4 +12,4 @@ router.route("/eventbus/*").handler(
     }).handle);
 router.route().handler(StaticHandler.create().handle);
 vertx.createHttpServer().requestHandler(router.accept).listen(8080);
-console.log("web is now running");
+console.log("WEB is now running");

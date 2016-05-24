@@ -45,7 +45,6 @@ def eb = vertx.eventBus()
 i = 0;
 vertx.setPeriodic(5000, { v ->
     def map = [
-            "from"   : "story teller",
             "message": story[i],
             "counter": i
     ]
@@ -56,7 +55,7 @@ vertx.setPeriodic(5000, { v ->
     }
 
     def json = new JsonObject(map)
-    println "producer sends: " + json
+    println "PRODUCER sends: " + json
     eb.publish("story_topic", json)
 })
-println "producer is now running"
+println "PRODUCER is now running"

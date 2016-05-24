@@ -7,7 +7,7 @@
 
 FROM java:8-jre
 
-ENV VERTICLE_FILE producer-0.1-fat.jar
+ENV VERTICLE_FILE producer-fat.jar
 
 # Set vertx option
 ENV VERTX_OPTIONS "-cluster"

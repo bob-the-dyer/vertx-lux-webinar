@@ -16,7 +16,7 @@
     <version>0.1</version>
 
     <properties>
-        <docker.image>bnb/persistor</docker.image>
+        <docker.image>bnb/persistor-${project.version}</docker.image>
         <vertx.version>3.2.1</vertx.version>
         <java.version>1.8</java.version>
     </properties>
@@ -146,7 +146,7 @@
                                         <argument>-p</argument>
                                         <argument>4000:4000</argument>
                                         <argument>--name</argument>
-                                        <argument>persistor</argument>
+                                        <argument>persistor-${project.version}</argument>
                                         <argument>--link</argument>
                                         <argument>lux-mongo</argument>
                                         <argument>${docker.image}</argument>
