@@ -16,7 +16,7 @@ To build project, deploy and run microservices in Docker use indocker profile: m
  - Start mongo in docker
  - Persistor: exploring java code, maven build, Dockerfile, deployment to docker
     - vert.x shell interactions
-    - JMX, jsonsole, visualVM (a lots of options should be added)
+    - JMX, jsonsole, visualVM (a lots of options should be added) - 192.168.99.100:1898
  - web: exploring js client and server code, maven build, Dockerfile, deployment to docker, test in browser
  - vert.x console, ha demo
  - split brain demo: linux vm launch, blockade
