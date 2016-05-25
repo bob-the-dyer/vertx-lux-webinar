@@ -1,15 +1,9 @@
 containers:
   c1:
-    image: ubuntu
-    command: /bin/sleep 300000
-    ports: [10000]
+    image: bnb/producer:0.1
 
   c2:
-    image: ubuntu
-    command: sh -c "ping $C1_PORT_10000_TCP_ADDR"
-    links: ["c1"]
+    image: bnb/consumer:0.1
 
   c3:
-    image: ubuntu
-    command: sh -c "ping $C1_PORT_10000_TCP_ADDR"
-    links: ["c1"]
+    image: bnb/web:0.1
