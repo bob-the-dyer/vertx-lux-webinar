@@ -55,7 +55,7 @@ vertx.setPeriodic(5000, { v ->
     }
 
     def json = new JsonObject(map)
-    println "####( PRODUCER )#### sends: " + json
+    println "####( PRODUCER  )#### sends: " + json
     eb.publish("story_topic", json)
 })
 println "<--- PRODUCER ---> is now running"
