@@ -1,10 +1,3 @@
-###
-# To build:
-#  docker build -t bnb/web .
-# To run:
-#   docker run -t -i bnb/web
-###
-
 FROM java:8-jre
 
 ENV VERTICLE_FILE web-fat.jar

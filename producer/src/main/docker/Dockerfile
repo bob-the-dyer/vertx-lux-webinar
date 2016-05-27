@@ -1,10 +1,3 @@
-###
-# To build:
-#  docker build -t bnb/producer .
-# To run:
-#   docker run -t -i bnb/producer
-###
-
 FROM java:8-jre
 
 ENV VERTICLE_FILE producer-fat.jar

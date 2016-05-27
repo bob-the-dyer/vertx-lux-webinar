@@ -198,14 +198,18 @@
                                     <executable>docker</executable>
                                     <arguments>
                                         <argument>run</argument>
+                                        <argument>-e</argument>
+                                        <argument>VERTX_OPTIONS=${vertx.options}</argument>
+                                        <argument>-e</argument>
+                                        <argument>STARTER_VERTICLE=${starter.verticle}</argument>
                                         <argument>--rm</argument>
                                         <argument>-i</argument>
                                         <argument>-p</argument>
                                         <argument>8080:8080</argument>
+                                        <argument>-p</argument>
                                         <argument>4000:4000</argument>
+                                        <argument>-p</argument>
                                         <argument>1898:1898</argument>
-                                        <argument>--name</argument>
-                                        <argument>hanode-${project.version}</argument>
                                         <argument>${docker.image}</argument>
                                     </arguments>
                                 </configuration>

@@ -6,7 +6,14 @@ public class StarterVerticle extends io.vertx.core.AbstractVerticle {
     @Override
     public void start() throws Exception {
         out.println("<--- STARTER ---> starts");
-        vertx.deployVerticle("1234");
+        final String starterVerticleName = System.getProperty("starter.verticle");
+        vertx.deployVerticle(starterVerticleName,  h -> {
+            if (h.succeeded()){
+                out.println("####( STARTER )#### " + starterVerticleName + " was deployed");
+            } else {
+                out.println("####( STARTER )#### " + starterVerticleName + " was NOT deployed");
+            }
+        });
         out.println("<--- STARTER ---> finishes");
     }
 }

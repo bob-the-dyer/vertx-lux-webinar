@@ -1,10 +1,3 @@
-###
-# To build:
-#  docker build -t bnb/consumer .
-# To run:
-#   docker run -t -i bnb/consumer
-###
-
 FROM java:8-jre
 
 ENV VERTICLE_FILE consumer-fat.jar

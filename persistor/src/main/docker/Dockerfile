@@ -1,10 +1,3 @@
-###
-# To build:
-#  docker build -t bnb/persistor .
-# To run:
-#   docker run -t -i bnb/persistor
-###
-
 FROM java:8-jre
 
 ENV SPRING_BOOT_FILE persistor-0.1.jar
