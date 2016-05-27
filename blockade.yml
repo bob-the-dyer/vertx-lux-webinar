@@ -7,4 +7,4 @@ containers:
 
   c3:
     image: bnb/web:0.1
-    ports: {8080:8080}
+    ports: {8080: 8080}
