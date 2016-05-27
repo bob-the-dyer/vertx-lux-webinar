@@ -15,6 +15,7 @@
         <property name="hazelcast.max.no.heartbeat.seconds">3</property>
         <property name="hazelcast.merge.first.run.delay.seconds">3</property>
         <property name="hazelcast.merge.next.run.delay.seconds">3</property>
+        <property name="hazelcast.max.join.merge.target.seconds">3</property>
     </properties>
 
     <group>
