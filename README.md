@@ -5,7 +5,11 @@ To build project use: mvn clean package
 
 Verticals are deployed as a fat jar in both "native"(via vertx launcher) and embedded (inside spring boot app) 
 modes inside Docker containers. 
-To build project, deploy and run microservices in Docker use indocker profile: mvn clean package -P con,run  
+To build project, deploy and run microservices in Docker use: mvn clean package -P con,run
+ - con profile - creates Docker image
+ - run profile - run Docker image 
+To build all containers at once use: sh buildall.sh
+To run all containers at once use: docker-compose up 
 
  
     Plan for webex
@@ -26,7 +30,13 @@ To build project, deploy and run microservices in Docker use indocker profile: m
     Bonus topics
 - https://www.techempower.com/benchmarks/
 - comparing with akka
-- vert.x internals: event loop, worker pool, shared data, nio 
+- vert.x internals: event loop, worker pool, shared data, nio
+        
+
+    Negative things to mention
+ - vert.x cluster in docker doesn’t break on docker kill and with blockade partition (from hazelcast point of view, distributed eventbus stops working)
+ - rmi host on boot2docker needs to be specified (-Djava.rmi.server.hostname='192.168.99.100'), not on linux
+ - redeployment of vertical after split brain doesn’t work with scripts (rb, groovy) when packaged in jar with script not found
  
 
     Hints for docker interaction:
