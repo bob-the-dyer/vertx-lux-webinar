@@ -108,11 +108,6 @@
             <build>
                 <plugins>
                     <plugin>
-                        <!--
-                          This plugin builds the Docker image. It merges src/main/docker/Dockerfile with the resources set in the
-                          configuration. The resources should embed the current project and its dependencies. Here there is no
-                          dependencies.
-                        -->
                         <groupId>com.spotify</groupId>
                         <artifactId>docker-maven-plugin</artifactId>
                         <version>0.2.11</version>
