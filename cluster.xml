@@ -13,9 +13,9 @@
         <!--<property name="hazelcast.connection.monitor.interval">1</property>-->
         <!--<property name="hazelcast.partition.migration.timeout">1</property>-->
         <property name="hazelcast.max.no.heartbeat.seconds">3</property>
-        <property name="hazelcast.merge.first.run.delay.seconds">3</property>
-        <property name="hazelcast.merge.next.run.delay.seconds">3</property>
-        <property name="hazelcast.max.join.merge.target.seconds">3</property>
+        <property name="hazelcast.merge.first.run.delay.seconds">10</property>
+        <property name="hazelcast.merge.next.run.delay.seconds">10</property>
+        <property name="hazelcast.max.join.merge.target.seconds">5</property>
     </properties>
 
     <group>

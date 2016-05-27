@@ -43,7 +43,7 @@ def story = [
 
 def eb = vertx.eventBus()
 i = 0;
-vertx.setPeriodic(5000, { v ->
+vertx.setPeriodic(10000, { v ->
     def map = [
             "message": story[i],
             "counter": i
