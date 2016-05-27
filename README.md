@@ -34,9 +34,10 @@ To run all containers at once use: docker-compose up
         
 
     Negative things to mention
- - vert.x cluster in docker doesn’t break on docker kill and with blockade partition (from hazelcast point of view, distributed eventbus stops working)
+ - hazelcast by default has timeouts and delays that should be configured for each particular case.    
  - rmi host on boot2docker needs to be specified (-Djava.rmi.server.hostname='192.168.99.100'), not on linux
- - redeployment of vertical after split brain doesn’t work with scripts (rb, groovy) when packaged in jar with script not found
+ - ports will not automatically be opened while migrating from container to container, i.e. migration of web is useless,
+ use super ha node with all ports needed
  
 
     Hints for docker interaction:
@@ -74,7 +75,7 @@ To run all containers at once use: docker-compose up
   
 
     Running vert.x from command line
-vertx run ru/spb/luxoft/webinar/bnb/producer.groovy -cp consumer-0.1.jar:producer-0.1.jar:web-0.1.jar:cluster.xml -ha -cluster -cluster-host 10.0.1.2
+vertx run producer.groovy -cp consumer-0.1.jar:producer-0.1.jar:web-0.1.jar:cluster.xml -ha -cluster -cluster-host 10.0.1.2 -quorum 2
 
 Custom cluster.xml is an override for hazelcast default config in order to use proper network interface as 
-there could be several and hazelcast can choose any.
+there could be several and hazelcast can choose any plus custom timeouts and delays should be configured in properties.
