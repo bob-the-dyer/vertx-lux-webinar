@@ -14,7 +14,7 @@ ENV VERTX_OPTIONS "-cluster"
 
 # Set hazelcast options
 #ENV HAZELCAST_OPTIONS -Dhazelcast.connection.monitor.max.faults=1 -Dhazelcast.connection.monitor.interval=1 -Dhazelcast.partition.migration.timeout=1 -Dhazelcast.connect.all.wait.seconds=5 -Dhazelcast.max.no.heartbeat.seconds=3
-ENV HAZELCAST_OPTIONS -Dhazelcast.max.no.heartbeat.seconds=3
+ENV HAZELCAST_OPTIONS -Dhazelcast.max.no.heartbeat.seconds=3 -Dhazelcast.merge.first.run.delay.seconds=3 -Dhazelcast.merge.next.run.delay.seconds=3
 
 # Set the location of the verticles
 ENV VERTICLE_HOME /usr/verticles
