@@ -22,4 +22,4 @@ containers:
     image: bnb/hanode:0.1
     ports: {1003: 4000, 2003: 1898, 3003: 8080}
     environment: {VERTX_OPTIONS: -ha, STARTER_VERTICLE: ru.spb.luxoft.vertx.webinar.bnb.Persistor}
-    links: { lux-mongo: master}
+    links: {lux-mongo: master}
