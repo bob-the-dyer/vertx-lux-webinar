@@ -39,6 +39,7 @@ To run hanode from maven: mvn package -P con,run -Dvertx.options="-ha" -Dstarter
  - rmi host on boot2docker needs to be specified (-Djava.rmi.server.hostname='192.168.99.100'), not on linux
  - ports will not automatically be opened while migrating from container to container, i.e. migration of web is useless,
  use super ha node with all ports needed
+ - hanode - StarterVerticla is replicated in ha node instead of target verticle in vertx.deploy() ...
  
 
     Hints for docker interaction:
