@@ -40,6 +40,8 @@ To run hanode from maven: mvn package -P con,run -Dvertx.options="-ha" -Dstarter
  - ports will not automatically be opened while migrating from container to container, i.e. migration of web is useless,
  use super ha node with all ports needed
  - hanode - StarterVerticla is replicated in ha node instead of target verticle in vertx.deploy() ...
+ - hanode - quorum is set by default with -ha???
+ - on split brain - no quorum -> undeploy -> trying to connect replica node -> addiding to black list ->
  
 
     Hints for docker interaction:
