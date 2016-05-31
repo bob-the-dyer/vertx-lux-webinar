@@ -11,7 +11,7 @@
 
     <properties>
         <vertx.version>3.2.1</vertx.version>
-        <main.verticle>ru.spb.luxoft.vertx.webinar.bnb.StarterVerticle</main.verticle>
+        <main.class>ru.spb.luxoft.vertx.webinar.bnb.Starter</main.class>
         <docker.image>bnb/hanode:${project.version}</docker.image>
     </properties>
 
@@ -108,8 +108,7 @@
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <manifestEntries>
-                                        <Main-Class>io.vertx.core.Launcher</Main-Class>
-                                        <Main-Verticle>${main.verticle}</Main-Verticle>
+                                        <Main-Class>${main.class}</Main-Class>
                                     </manifestEntries>
                                 </transformer>
                                 <transformer
@@ -199,10 +198,9 @@
                                     <arguments>
                                         <argument>run</argument>
                                         <argument>-e</argument>
-                                        <argument>VERTX_OPTIONS=${vertx.options}</argument>
+                                        <argument>START_VERTICLE=${start.verticle}</argument>
                                         <argument>-e</argument>
-                                        <argument>STARTER_VERTICLE=${starter.verticle}</argument>
-                                        <argument>--rm</argument>
+                                        <argument>VERTX_OPTIONS=${vertx.options}</argument>
                                         <argument>-i</argument>
                                         <argument>-p</argument>
                                         <argument>8080:8080</argument>

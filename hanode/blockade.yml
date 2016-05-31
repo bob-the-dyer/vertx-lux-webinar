@@ -1,0 +1,15 @@
+containers:
+  p:
+    image: bnb/hanode:0.1
+    ports: {1004: 4000, 2004: 1898, 3004: 8080}
+    environment: {VERTX_OPTIONS: -ha, START_VERTICLE: producer.groovy}
+
+  c:
+    image: bnb/hanode:0.1
+    ports: {1001: 4000, 2001: 1898, 3001: 8080}
+    environment: {VERTX_OPTIONS: -ha, START_VERTICLE: consumer.rb}
+
+  w:
+    image: bnb/hanode:0.1
+    ports: {1002: 4000, 2002: 1898, 3002: 8080}
+    environment: {VERTX_OPTIONS: -ha, START_VERTICLE: web.js}

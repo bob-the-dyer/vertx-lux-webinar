@@ -11,8 +11,8 @@ services:
      - "2004:1898"
      - "3004:8080"
     environment:
+      START_VERTICLE: producer.groovy
       VERTX_OPTIONS: -ha
-      STARTER_VERTICLE: producer.groovy
   consumer:
     image: bnb/hanode:0.1
     ports:
@@ -20,8 +20,8 @@ services:
      - "2001:1898"
      - "3001:8080"
     environment:
+      START_VERTICLE: consumer.rb
       VERTX_OPTIONS: -ha
-      STARTER_VERTICLE: consumer.rb
   persistor:
     image: bnb/hanode:0.1
     ports:
@@ -29,8 +29,8 @@ services:
      - "2002:1898"
      - "3002:8080"
     environment:
+      START_VERTICLE: ru.spb.luxoft.vertx.webinar.bnb.Persistor
       VERTX_OPTIONS: -ha
-      STARTER_VERTICLE: ru.spb.luxoft.vertx.webinar.bnb.Persistor
     depends_on:
       - lux-mongo
   web:
@@ -40,5 +40,5 @@ services:
      - "2003:1898"
      - "3003:8080"
     environment:
+      START_VERTICLE: web.js
       VERTX_OPTIONS: -ha
-      STARTER_VERTICLE: web.js

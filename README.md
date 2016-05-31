@@ -10,7 +10,7 @@ To build project, deploy and run microservices in Docker use: mvn clean package 
  - run profile - run Docker image 
 To build all containers at once use: sh buildall.sh
 To run all containers at once use: docker-compose up 
-To run hanode from maven: mvn package -P con,run -Dvertx.options="-ha" -Dstarter.verticle="producer.groovy"
+To run hanode from maven: mvn package -P con,run -Dvertx.options="-ha" -Dstart.verticle="producer.groovy"
 
  
     Plan for webex

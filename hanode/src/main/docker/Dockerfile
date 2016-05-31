@@ -13,6 +13,7 @@ ENV HAZELCAST_OPTIONS -Dhazelcast.max.no.heartbeat.seconds=3 -Dhazelcast.merge.f
 
 # Set vertx option
 ENV VERTX_OPTIONS "-ha"
+ENV START_VERTICLE "bare"
 
 # Here we need to expose all ports from all embedded verticles
 EXPOSE 4000
@@ -25,4 +26,4 @@ COPY ./verticles $HANODE_HOME
 # Launch the boot app
 WORKDIR $HANODE_HOME
 ENTRYPOINT ["sh", "-c"]
-CMD ["java $HAZELCAST_OPTIONS $REMOTE_JMX_OPTIONS -Dstarter.verticle=$STARTER_VERTICLE -jar $HANODE_FILE $VERTX_OPTIONS"]
+CMD ["java $HAZELCAST_OPTIONS $REMOTE_JMX_OPTIONS -Dstart.verticle=$START_VERTICLE -Dvertx.options=$VERTX_OPTIONS -jar $HANODE_FILE"]
