@@ -11,9 +11,8 @@ ENV REMOTE_JMX_OPTIONS -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxre
 # ENV HAZELCAST_OPTIONS -Dhazelcast.connection.monitor.max.faults=1 -Dhazelcast.connection.monitor.interval=1 -Dhazelcast.partition.migration.timeout=1 -Dhazelcast.connect.all.wait.seconds=5 -Dhazelcast.max.no.heartbeat.seconds=3
 ENV HAZELCAST_OPTIONS -Dhazelcast.max.no.heartbeat.seconds=3 -Dhazelcast.merge.first.run.delay.seconds=3 -Dhazelcast.merge.next.run.delay.seconds=3 -Dhazelcast.max.join.merge.target.seconds=5
 
-# Set vertx option
-ENV VERTX_OPTIONS "-ha"
-ENV START_VERTICLE "bare"
+# Set vertx command
+ENV VERTX_RUN_COMMAND "bare"
 
 # Here we need to expose all ports from all embedded verticles
 EXPOSE 4000
@@ -26,4 +25,4 @@ COPY ./verticles $HANODE_HOME
 # Launch the boot app
 WORKDIR $HANODE_HOME
 ENTRYPOINT ["sh", "-c"]
-CMD ["java $HAZELCAST_OPTIONS $REMOTE_JMX_OPTIONS -Dstart.verticle=$START_VERTICLE -Dvertx.options=$VERTX_OPTIONS -jar $HANODE_FILE"]
+CMD ["java $HAZELCAST_OPTIONS $REMOTE_JMX_OPTIONS -jar $HANODE_FILE $VERTX_RUN_COMMAND"]
