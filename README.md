@@ -39,9 +39,12 @@ To run hanode from maven: mvn package -P con,run -Dvertx.options="-ha" -Dstart.v
  - rmi host on boot2docker needs to be specified (-Djava.rmi.server.hostname='192.168.99.100'), not on linux
  - ports will not automatically be opened while migrating from container to container, i.e. migration of web is useless,
  use super ha node with all ports needed
- - hanode - StarterVerticla is replicated in ha node instead of target verticle in vertx.deploy() ...
- - hanode - quorum is set by default with -ha???
- - on split brain - no quorum -> undeploy -> trying to connect replica node -> addiding to black list ->
+ - hanode - StarterVerticle is replicated in ha node instead of target verticle in vertx.deploy() -> solved with Launcher
+ - hanode - looks like quorum is set by default with -ha
+ - on split brain - no quorum -> undeploy -> trying to connect replica node -> adding to black list -> removing node 
+    -> not reconnecting... totally depends on how cluster management works in hazelcast and how 
+    hazalcast's timeouts and delays are configured. I doubt that HA based on hazelcast can be reliable and predictive
+    especially on network partitioning. Need to try JGroups cluster management but as of now it's in technical review.   
  
 
     Hints for docker interaction:

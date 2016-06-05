@@ -9,13 +9,16 @@
         <property name="hazelcast.wait.seconds.before.join">0</property>
         <property name="hazelcast.logging.type">jdk</property>
 
-        <!--<property name="hazelcast.connection.monitor.max.faults">1</property>-->
-        <!--<property name="hazelcast.connection.monitor.interval">1</property>-->
-        <!--<property name="hazelcast.partition.migration.timeout">1</property>-->
-        <property name="hazelcast.max.no.heartbeat.seconds">3</property>
-        <property name="hazelcast.merge.first.run.delay.seconds">3</property>
+        <property name="hazelcast.max.no.heartbeat.seconds">4</property>
+        <property name="hazelcast.merge.first.run.delay.seconds">5</property>
         <property name="hazelcast.merge.next.run.delay.seconds">3</property>
         <property name="hazelcast.max.join.merge.target.seconds">5</property>
+
+        <!--<property name="hazelcast.connection.monitor.max.faults">2</property>-->
+        <!--<property name="hazelcast.connect.all.wait.seconds">10</property>-->
+        <!--<property name="hazelcast.max.join.seconds">10</property>-->
+        <!--<property name="hazelcast.max.no.master.confirmation.seconds">4</property>-->
+        <!--<property name="hazelcast.max.wait.seconds.before.join">4</property>-->
     </properties>
 
     <group>
@@ -56,6 +59,8 @@
         <interfaces enabled="true">
             <interface>10.0.1.*</interface>
             <interface>172.17.0.*</interface>
+            <interface>172.18.0.*</interface>
+            <interface>172.19.0.*</interface>
         </interfaces>
         <ssl enabled="false"/>
         <socket-interceptor enabled="false"/>
