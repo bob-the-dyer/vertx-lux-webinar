@@ -44,7 +44,9 @@ To run hanode from maven: mvn package -P con,run -Dvertx.options="-ha" -Dstart.v
  - on split brain - no quorum -> undeploy -> trying to connect replica node -> adding to black list -> removing node 
     -> not reconnecting... totally depends on how cluster management works in hazelcast and how 
     hazalcast's timeouts and delays are configured. I doubt that HA based on hazelcast can be reliable and predictive
-    especially on network partitioning. Need to try JGroups cluster management but as of now it's in technical review.   
+    especially on network partitioning. Need to try JGroups cluster management but as of now it's in technical review.
+ - https://groups.google.com/forum/#!topic/vertx/duxfd2KNbpk  - TypeError: null has no such function "getResourceAsStream" with
+        quorum 2
  
 
     Hints for docker interaction:

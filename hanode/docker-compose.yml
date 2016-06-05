@@ -11,7 +11,7 @@ services:
      - "2004:1898"
      - "3004:8080"
     environment:
-      VERTX_RUN_COMMAND: run producer.groovy -ha -quorum 3
+      VERTX_RUN_COMMAND: run producer.groovy -ha
   consumer:
     image: bnb/hanode:0.1
     ports:
@@ -19,7 +19,7 @@ services:
      - "2001:1898"
      - "3001:8080"
     environment:
-      VERTX_RUN_COMMAND: run consumer.rb -ha -quorum 3
+      VERTX_RUN_COMMAND: run consumer.rb -ha
   persistor:
     image: bnb/hanode:0.1
     ports:
@@ -27,7 +27,7 @@ services:
      - "2002:1898"
      - "3002:8080"
     environment:
-      VERTX_RUN_COMMAND: run ru.spb.luxoft.vertx.webinar.bnb.Persistor -ha -quorum 3
+      VERTX_RUN_COMMAND: run ru.spb.luxoft.vertx.webinar.bnb.Persistor -ha
     depends_on:
       - lux-mongo
   web:
@@ -37,4 +37,4 @@ services:
      - "2003:1898"
      - "3003:8080"
     environment:
-      VERTX_RUN_COMMAND: run web.js -ha -quorum 3
+      VERTX_RUN_COMMAND: run web.js -ha

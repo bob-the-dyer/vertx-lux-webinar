@@ -2,14 +2,14 @@ containers:
   p:
     image: bnb/hanode:0.1
     ports: {1004: 4000, 2004: 1898, 3004: 8080}
-    environment: {VERTX_RUN_COMMAND: "run producer.groovy -ha -quorum 2"}
+    environment: {VERTX_RUN_COMMAND: "run producer.groovy -ha"}
 
   c:
     image: bnb/hanode:0.1
     ports: {1001: 4000, 2001: 1898, 3001: 8080}
-    environment: {VERTX_RUN_COMMAND: "run consumer.rb -ha -quorum 2"}
+    environment: {VERTX_RUN_COMMAND: "run consumer.rb -ha"}
 
   w:
     image: bnb/hanode:0.1
     ports: {1002: 4000, 2002: 1898, 3002: 8080}
-    environment: {VERTX_RUN_COMMAND: "run web.js -ha -quorum 2"}
+    environment: {VERTX_RUN_COMMAND: "run web.js -ha"}
