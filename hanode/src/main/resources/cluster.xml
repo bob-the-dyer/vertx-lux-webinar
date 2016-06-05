@@ -58,9 +58,7 @@
         </join>
         <interfaces enabled="true">
             <interface>10.0.1.*</interface>
-            <interface>172.17.0.*</interface>
-            <interface>172.18.0.*</interface>
-            <interface>172.19.0.*</interface>
+            <interface>172.*.0.*</interface>
         </interfaces>
         <ssl enabled="false"/>
         <socket-interceptor enabled="false"/>
