@@ -165,8 +165,6 @@
                                         <argument>-i</argument>
                                         <argument>-p</argument>
                                         <argument>8080:8080</argument>
-                                        <argument>--name</argument>
-                                        <argument>web-${project.version}</argument>
                                         <argument>${docker.image}</argument>
                                     </arguments>
                                 </configuration>
